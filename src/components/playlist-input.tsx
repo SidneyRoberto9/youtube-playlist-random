@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Fragment, useRef, useState } from 'react';
 
+import { Button } from '@/components/ui/button';
 import { pickRandom } from '@/lib/píck-random';
 import { formatUrlString } from '@/lib/utils';
 
@@ -59,23 +60,21 @@ const PlaylistInput = () => {
       </div>
       <div className="my-2 sm:max-w-xl max-w-sm text-sm p-4 text-center flex flex-col items-center justify-center m-auto">
         <p>You can enter a playlist link, playlist ID or even a video link from the playlist!</p>
-        <p>This only works with playlists with upto 500 videos.</p>
+        <p>This only works with playlists with up to 500 videos.</p>
       </div>
 
       {randomVideo && (
         <Fragment>
           <hr className="sm:my-8 my-4 h-0.5 border-t-0 bg-stone-900 opacity-100 dark:bg-stone-100  sm:max-w-lg max-w-xs m-auto" />
-          <div className="my-2 flex flex-col gap-2 items-center justify-center m-auto">
-            <Link
-              href={`https://www.youtube.com/watch?v=${randomVideo}`}
-              target="_blank"
-              className=" p-2 px-4 border-2 rounded-xl border-stone-900 dark:border-stone-50"
-            >
-              For access video click Here
-            </Link>
+          <div className="my-2 flex flex-col gap-6 items-center justify-center m-auto">
+            <Button asChild variant="default" size="default">
+              <Link href={`https://www.youtube.com/watch?v=${randomVideo}`} target="_blank">
+                For access video click Here
+              </Link>
+            </Button>
+
             <iframe
-              width="1366"
-              height="768"
+              className="h-[50vh] w-full"
               src={`https://www.youtube.com/embed/${randomVideo}`}
             />
           </div>
